@@ -16,7 +16,9 @@ const url = process.env.DBURL // A duplicate index key error has been occured wi
 // const url = "mongodb://localhost:27017/Fatroua"
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}).then(()=> console.log('Database Connected Successfully....')).catch(()=> console.log('Ohhhh an error occured'))
 
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 app.use(bodyParser.json())
 
 app.get("/test-route", (req, res)=>{res.status(200).send("<h1>Everything Alright 😉</h1>")}) //Test route
